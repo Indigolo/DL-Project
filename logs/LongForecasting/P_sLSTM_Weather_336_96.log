@@ -1,0 +1,4 @@
+Args in experiment:
+Namespace(is_training=1, model_id='weather_336_96', model='P_sLSTM', data='custom', root_path='./dataset/', data_path='train.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=336, label_len=18, pred_len=96, channel=21, embedding_dim=100, num_heads=2, conv1d_kernel_size=8, group_norm_weight=True, dropout=0.1, num_blocks=2, patch_size=56, stride=56, num_layers=1, embed_type=0, enc_in=7, dec_in=7, c_out=7, d_model=512, n_heads=8, e_layers=2, d_layers=1, d_ff=2048, moving_avg=25, factor=1, distil=True, embed='timeF', activation='gelu', output_attention=False, do_predict=False, num_workers=0, itr=1, train_epochs=10, batch_size=16, patience=5, learning_rate=0.0001, des='Exp', loss='mse', lradj='type1', use_amp=False, use_gpu=False, gpu=0, use_multi_gpu=False, devices='0,1', test_flop=False)
+Use CPU
+>>>>>>>start training : weather_336_96_P_sLSTM_custom_ftM_sl336_ll18_pl96_0>>>>>>>>>>>>>>>>>>>>>>>>>>
