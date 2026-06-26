@@ -1,4 +1,4 @@
-"""Inference entrypoint for the trained LSTM baseline."""
+"""Inference entrypoint for the trained PatchTST baseline."""
 
 from __future__ import annotations
 

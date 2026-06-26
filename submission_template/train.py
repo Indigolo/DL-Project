@@ -1,4 +1,4 @@
-"""Train a first classical LSTM baseline for the assignment dataset."""
+"""Train a PatchTST baseline for the assignment dataset."""
 
 from __future__ import annotations
 
@@ -50,12 +50,16 @@ def train_epoch(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Train an autoregressive LSTM baseline.")
+    parser = argparse.ArgumentParser(description="Train an autoregressive PatchTST baseline.")
     parser.add_argument("--train", required=True, type=Path, help="Path to train.csv")
     parser.add_argument("--checkpoint", required=True, type=Path, help="Where to store the checkpoint")
-    parser.add_argument("--context-length", type=int, default=168, help="History window used by the LSTM")
-    parser.add_argument("--hidden-size", type=int, default=64)
-    parser.add_argument("--num-layers", type=int, default=2)
+    parser.add_argument("--context-length", type=int, default=168, help="History window used by the model")
+    parser.add_argument("--patch-len", type=int, default=24, help="Length of each patch (in time steps)")
+    parser.add_argument("--stride", type=int, default=12, help="Stride between consecutive patches")
+    parser.add_argument("--d-model", type=int, default=64, help="Transformer embedding dimension")
+    parser.add_argument("--nhead", type=int, default=4, help="Number of attention heads")
+    parser.add_argument("--num-layers", type=int, default=3, help="Number of transformer encoder layers")
+    parser.add_argument("--dim-feedforward", type=int, default=128, help="Transformer feedforward dimension")
     parser.add_argument("--dropout", type=float, default=0.1)
     parser.add_argument("--embedding-dim", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=256)
@@ -78,8 +82,13 @@ def main() -> None:
 
     model = ForecastModel(
         input_size=preprocessor.input_size,
-        hidden_size=args.hidden_size,
+        context_length=args.context_length,
+        patch_len=args.patch_len,
+        stride=args.stride,
+        d_model=args.d_model,
+        nhead=args.nhead,
         num_layers=args.num_layers,
+        dim_feedforward=args.dim_feedforward,
         dropout=args.dropout,
         series_count=preprocessor.series_count,
         series_embedding_dim=args.embedding_dim,
@@ -109,8 +118,13 @@ def main() -> None:
                 "state_dict": model.state_dict(),
                 "model_config": {
                     "input_size": preprocessor.input_size,
-                    "hidden_size": args.hidden_size,
+                    "context_length": args.context_length,
+                    "patch_len": args.patch_len,
+                    "stride": args.stride,
+                    "d_model": args.d_model,
+                    "nhead": args.nhead,
                     "num_layers": args.num_layers,
+                    "dim_feedforward": args.dim_feedforward,
                     "dropout": args.dropout,
                     "series_count": preprocessor.series_count,
                     "series_embedding_dim": args.embedding_dim,
