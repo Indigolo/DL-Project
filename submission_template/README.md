@@ -1,17 +1,49 @@
 # Final Submission Template
 
-Use this folder as the starting point for `final_submission.zip`.
+This folder now contains a PatchTST baseline that can be trained on the assignment data and packaged as `final_submission.zip`.
 
-For simple runnable baseline forecasts, see `student/baseline/`.
+## What The Baseline Does
 
-## Required Files
+- Trains a one-step autoregressive PatchTST model on `train.csv`.
+- Uses the past target history plus timestamp features and any numeric covariates present in the CSV.
+- Splits each input channel into patches and encodes them with a shared transformer encoder (channel-independent, as in the PatchTST paper).
+- Learns a small embedding per `series_id`.
+- Predicts the future horizon recursively so it can fill the full 336-step forecast index.
 
-- `predict.py`: inference entrypoint.
-- `requirements.txt`: Python dependencies needed for inference.
-- `checkpoint.pt`: trained model weights or checkpoint.
-- `src/`: optional package code.
+This is intentionally a simple first research baseline. It is useful for smoke-testing the data pipeline and giving you a PyTorch submission you can iterate on.
 
-## Required Command
+## Training
+
+Train a checkpoint from the downloaded dataset:
+
+```bash
+python train.py \
+  --train /path/to/data/train.csv \
+  --checkpoint checkpoint.pt
+```
+
+Useful knobs:
+
+- `--context-length 168`: number of historical hourly steps in each input window.
+- `--validation-steps 336`: number of tail steps per series reserved for internal validation.
+- `--patch-len`, `--stride`: how the context window is split into patches.
+- `--d-model`, `--nhead`, `--num-layers`, `--dim-feedforward`, `--dropout`: core transformer capacity settings.
+- `--epochs`, `--batch-size`, `--learning-rate`: standard optimization settings.
+- `--warmup-steps`, `--min-lr-ratio`: the learning rate ramps up linearly for `--warmup-steps` batches, then cosine-decays toward `--min-lr-ratio * --learning-rate` over the rest of training. The current LR is printed each epoch.
+- `--patience`: stop early once validation RMSE hasn't improved for this many epochs (default `5`; set to `<=0` to disable).
+- `--resume`: continue training from an existing checkpoint instead of starting from random weights. The model architecture and preprocessing state are loaded from the checkpoint, so other architecture flags (`--patch-len`, `--d-model`, etc.) are ignored when this is set:
+
+  ```bash
+  python train.py \
+    --train /path/to/data/train.csv \
+    --checkpoint checkpoint.pt \
+    --resume checkpoint.pt \
+    --epochs 10
+  ```
+
+During training, the script prints internal validation MAE and RMSE from an autoregressive rollout over the held-out tail of each series.
+
+## Inference Contract
 
 Your submission must support:
 
@@ -19,19 +51,12 @@ Your submission must support:
 python predict.py --input_dir /data/input --output_file /output/predictions.csv --checkpoint /submission/checkpoint.pt
 ```
 
-## Output Format
+The script:
 
-Required schema:
-
-```csv
-series_id,timestamp,prediction
-```
-
-Your output must cover every row in the provided forecast index. Public validation uses `forecast_index_validation.csv`; private evaluation uses `forecast_index_test.csv` in the input directory. In the current benchmark design, the 24-hour forecast horizon is a rollout block length. The validation and private test forecast indices each contain 336 hourly timestamps per series.
-
-The leaderboard reports MAE, MSE, RMSE, MAPE, sMAPE, and WAPE. Lower is better for all metrics.
-
-The model name is entered in the leaderboard Space when uploading validation predictions or the final archive. It is not part of `predictions.csv`. Use the same model name for the final archive as for the validation row that represents that checkpoint.
+- reads `forecast_index_test.csv` or `forecast_index_validation.csv`,
+- reads `test_input.csv` or `validation_input.csv` when available,
+- restores the saved preprocessing state and PatchTST weights,
+- writes predictions with schema `series_id,timestamp,prediction`.
 
 ## Packaging
 
