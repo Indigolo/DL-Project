@@ -185,6 +185,12 @@ def main() -> None:
     epochs_without_improvement = 0
     training_start = time.monotonic()
 
+    log_file = "training_log.txt"
+
+    with open(log_file, "w") as l:
+        l.write("Training Log\n")
+        l.write("=" * 40 + "\n")
+
     for epoch in range(1, args.epochs + 1):
         epoch_start = time.monotonic()
         train_loss = train_epoch(model, loader, optimizer, scheduler, device)
@@ -203,6 +209,11 @@ def main() -> None:
             f"elapsed={_format_duration(elapsed)} "
             f"eta={_format_duration(eta_seconds)}"
         )
+
+        with open(log_file, "a") as l:
+            l.write(
+                f"Epoch [{epoch/args.epochs}] Train Loss: {train_loss:.4f}\n"
+            )
 
         if best_payload is None or not np.isfinite(best_rmse) or metrics["rmse"] < best_rmse:
             best_rmse = metrics["rmse"]
