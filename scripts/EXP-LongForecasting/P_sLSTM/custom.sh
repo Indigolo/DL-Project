@@ -20,6 +20,7 @@ python -u run_longExp.py \
     --seq_len $seq_len \
     --pred_len 96 \
     --label_len 24 \
+    --d_model 64 \
     --des 'Exp' \
     --itr 1 --batch_size 16 \
     --patch_size 56 --stride 56 \
