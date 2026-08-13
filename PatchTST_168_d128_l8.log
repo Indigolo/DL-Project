@@ -1,0 +1,29 @@
+epoch=01 train_mse=0.23510 val_mae=4.05673 val_rmse=5.20580 lr=9.98e-04 epoch_time=0:08:55 elapsed=0:08:55 eta=4:18:47
+epoch=02 train_mse=0.17845 val_mae=3.25683 val_rmse=4.34222 lr=9.90e-04 epoch_time=0:08:58 elapsed=0:17:54 eta=4:10:34
+epoch=03 train_mse=0.16114 val_mae=2.85551 val_rmse=3.81781 lr=9.78e-04 epoch_time=0:08:59 elapsed=0:26:53 eta=4:01:59
+epoch=04 train_mse=0.15511 val_mae=3.06532 val_rmse=4.11908 lr=9.59e-04 epoch_time=0:09:00 elapsed=0:35:53 eta=3:53:13
+epoch=05 train_mse=0.15117 val_mae=2.64666 val_rmse=3.68048 lr=9.36e-04 epoch_time=0:09:00 elapsed=0:44:53 eta=3:44:24
+epoch=06 train_mse=0.14806 val_mae=3.13068 val_rmse=4.23394 lr=9.08e-04 epoch_time=0:09:00 elapsed=0:53:53 eta=3:35:31
+epoch=07 train_mse=0.14486 val_mae=3.85730 val_rmse=4.96813 lr=8.75e-04 epoch_time=0:09:00 elapsed=1:02:53 eta=3:26:37
+epoch=08 train_mse=0.14245 val_mae=3.05594 val_rmse=4.18572 lr=8.39e-04 epoch_time=0:08:59 elapsed=1:11:52 eta=3:17:38
+epoch=09 train_mse=0.13961 val_mae=2.78420 val_rmse=3.73612 lr=7.98e-04 epoch_time=0:08:59 elapsed=1:20:52 eta=3:08:40
+epoch=10 train_mse=0.13762 val_mae=2.71524 val_rmse=3.73979 lr=7.54e-04 epoch_time=0:09:00 elapsed=1:29:51 eta=2:59:43
+epoch=11 train_mse=0.13548 val_mae=2.68849 val_rmse=3.70475 lr=7.08e-04 epoch_time=0:09:00 elapsed=1:38:51 eta=2:50:45
+epoch=12 train_mse=0.13341 val_mae=2.99983 val_rmse=4.06316 lr=6.59e-04 epoch_time=0:09:00 elapsed=1:47:51 eta=2:41:47
+epoch=13 train_mse=0.13149 val_mae=2.90792 val_rmse=3.96311 lr=6.08e-04 epoch_time=0:09:00 elapsed=1:56:51 eta=2:32:49
+epoch=14 train_mse=0.12867 val_mae=2.61517 val_rmse=3.63126 lr=5.56e-04 epoch_time=0:09:00 elapsed=2:05:51 eta=2:23:50
+epoch=15 train_mse=0.12592 val_mae=2.67486 val_rmse=3.67689 lr=5.04e-04 epoch_time=0:09:00 elapsed=2:14:51 eta=2:14:51
+epoch=16 train_mse=0.12376 val_mae=2.72582 val_rmse=3.75442 lr=4.51e-04 epoch_time=0:09:00 elapsed=2:23:51 eta=2:05:52
+epoch=17 train_mse=0.12125 val_mae=2.60168 val_rmse=3.59753 lr=3.99e-04 epoch_time=0:09:00 elapsed=2:32:51 eta=1:56:53
+epoch=18 train_mse=0.11953 val_mae=2.73781 val_rmse=3.78524 lr=3.48e-04 epoch_time=0:09:00 elapsed=2:41:52 eta=1:47:54
+epoch=19 train_mse=0.11759 val_mae=2.65422 val_rmse=3.67679 lr=2.99e-04 epoch_time=0:08:59 elapsed=2:50:51 eta=1:38:55
+epoch=20 train_mse=0.11533 val_mae=2.80076 val_rmse=3.86782 lr=2.52e-04 epoch_time=0:08:59 elapsed=2:59:50 eta=1:29:55
+epoch=21 train_mse=0.11355 val_mae=2.87934 val_rmse=3.93991 lr=2.08e-04 epoch_time=0:08:59 elapsed=3:08:50 eta=1:20:56
+epoch=22 train_mse=0.11133 val_mae=2.66662 val_rmse=3.69908 lr=1.67e-04 epoch_time=0:09:00 elapsed=3:17:50 eta=1:11:56
+epoch=23 train_mse=0.10982 val_mae=2.63250 val_rmse=3.65680 lr=1.30e-04 epoch_time=0:09:00 elapsed=3:26:49 eta=1:02:57
+epoch=24 train_mse=0.10765 val_mae=2.69878 val_rmse=3.72128 lr=9.64e-05 epoch_time=0:08:59 elapsed=3:35:48 eta=0:53:57
+epoch=25 train_mse=0.10611 val_mae=2.63121 val_rmse=3.65556 lr=6.76e-05 epoch_time=0:08:59 elapsed=3:44:47 eta=0:44:57
+epoch=26 train_mse=0.10468 val_mae=2.63936 val_rmse=3.65605 lr=4.36e-05 epoch_time=0:08:59 elapsed=3:53:46 eta=0:35:58
+epoch=27 train_mse=0.10366 val_mae=2.68310 val_rmse=3.72492 lr=2.47e-05 epoch_time=0:08:59 elapsed=4:02:45 eta=0:26:58
+early_stopping=triggered epoch=27 epochs_without_improvement=10 best_val_rmse=3.59753
+saved_checkpoint=checkpoints/PatchTST_168_d128_l8.pt
