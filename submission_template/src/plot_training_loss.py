@@ -1,3 +1,4 @@
+import argparse
 import re
 
 import matplotlib.pyplot as plt
@@ -36,9 +37,22 @@ def read_training_log(log_file):
     return epochs, train_mse_values, val_mae_values, val_rmse_values
 
 
+def get_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--filename",
+        "-n",
+        type=str,
+        default=LOG_FILE,
+    )
+
+    return parser.parse_args()
+
+
 def main():
+    args = get_parser()
     epochs, train_mse_values, val_mae_values, val_rmse_values = read_training_log(
-        LOG_FILE
+        args.filename
     )
 
     # if not losses:
@@ -52,7 +66,7 @@ def main():
 
     plt.xlabel("Epoch", fontsize=32)
     plt.ylabel("", fontsize=32)
-    plt.gca().yaxis.set_major_locator(MultipleLocator(0.5))
+    plt.gca().yaxis.set_major_locator(MultipleLocator(0.25))
 
     plt.tick_params(axis="both", labelsize=16)
 
