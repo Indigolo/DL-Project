@@ -2,6 +2,7 @@ import argparse
 import re
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 
 
 def log2graph(log_file):
@@ -25,15 +26,19 @@ def log2graph(log_file):
 
     epochs = range(1, len(train) + 1)
 
-    plt.figure(figsize=(8, 5))
-    plt.plot(epochs, train, label="Train")
-    plt.plot(epochs, valid, label="Validation")
-    plt.plot(epochs, test, label="Test")
+    plt.figure(figsize=(100, 60))
+    plt.plot(epochs, train, marker="o", label="Train")
+    plt.plot(epochs, valid, marker="o", label="Validation")
+    plt.plot(epochs, test, marker="o", label="Test")
 
-    plt.xlabel("Epoch")
-    plt.ylabel("Loss")
-    plt.legend()
-    plt.grid(True)
+    plt.xlabel("Epoch", fontsize=32)
+    plt.ylabel("", fontsize=32)
+    plt.gca().yaxis.set_major_locator(MultipleLocator(0.25))
+
+    plt.tick_params(axis="both", labelsize=16)
+    plt.legend(fontsize=18)
+    plt.xticks(epochs)
+    plt.grid(True, alpha=0.3)
     plt.show()
 
 
