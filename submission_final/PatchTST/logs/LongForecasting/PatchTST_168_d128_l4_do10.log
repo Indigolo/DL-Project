@@ -1,0 +1,33 @@
+/home/sam2/DL-Project-patchtst/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+epoch=01 train_mse=0.20167 val_mae=3.55584 val_rmse=4.70554 lr=9.98e-04 epoch_time=0:08:00 elapsed=0:08:00 eta=3:51:55
+epoch=02 train_mse=0.16022 val_mae=3.07540 val_rmse=4.41830 lr=9.90e-04 epoch_time=0:08:10 elapsed=0:16:10 eta=3:46:22
+epoch=03 train_mse=0.15501 val_mae=5.31504 val_rmse=7.84226 lr=9.77e-04 epoch_time=0:08:14 elapsed=0:24:24 eta=3:39:39
+epoch=04 train_mse=0.15246 val_mae=2.83608 val_rmse=3.85085 lr=9.58e-04 epoch_time=0:08:16 elapsed=0:32:40 eta=3:32:21
+epoch=05 train_mse=0.15014 val_mae=3.65192 val_rmse=4.98720 lr=9.35e-04 epoch_time=0:08:15 elapsed=0:40:55 eta=3:24:35
+epoch=06 train_mse=0.14778 val_mae=2.71822 val_rmse=3.66358 lr=9.06e-04 epoch_time=0:08:16 elapsed=0:49:11 eta=3:16:43
+epoch=07 train_mse=0.14561 val_mae=2.65476 val_rmse=3.64711 lr=8.73e-04 epoch_time=0:08:16 elapsed=0:57:27 eta=3:08:46
+epoch=08 train_mse=0.14296 val_mae=2.80271 val_rmse=3.84406 lr=8.37e-04 epoch_time=0:08:16 elapsed=1:05:43 eta=3:00:43
+epoch=09 train_mse=0.13851 val_mae=3.74127 val_rmse=4.80374 lr=7.96e-04 epoch_time=0:08:32 elapsed=1:14:14 eta=2:53:14
+epoch=10 train_mse=0.13618 val_mae=3.18320 val_rmse=4.34798 lr=7.52e-04 epoch_time=0:09:43 elapsed=1:23:57 eta=2:47:54
+epoch=11 train_mse=0.13257 val_mae=2.64122 val_rmse=3.61547 lr=7.05e-04 epoch_time=0:09:39 elapsed=1:33:36 eta=2:41:41
+epoch=12 train_mse=0.13071 val_mae=3.70748 val_rmse=4.80026 lr=6.57e-04 epoch_time=0:09:04 elapsed=1:42:40 eta=2:34:00
+epoch=13 train_mse=0.12697 val_mae=2.68020 val_rmse=3.71850 lr=6.06e-04 epoch_time=0:07:07 elapsed=1:49:47 eta=2:23:34
+epoch=14 train_mse=0.12460 val_mae=2.58054 val_rmse=3.57068 lr=5.54e-04 epoch_time=0:07:09 elapsed=1:56:57 eta=2:13:39
+epoch=15 train_mse=0.12109 val_mae=2.67591 val_rmse=3.55288 lr=5.02e-04 epoch_time=0:07:08 elapsed=2:04:05 eta=2:04:05
+epoch=16 train_mse=0.11708 val_mae=2.60341 val_rmse=3.56568 lr=4.49e-04 epoch_time=0:07:09 elapsed=2:11:13 eta=1:54:49
+epoch=17 train_mse=0.11443 val_mae=2.57540 val_rmse=3.57244 lr=3.98e-04 epoch_time=0:07:10 elapsed=2:18:24 eta=1:45:50
+epoch=18 train_mse=0.11140 val_mae=2.67844 val_rmse=3.70734 lr=3.47e-04 epoch_time=0:05:56 elapsed=2:24:20 eta=1:36:13
+epoch=19 train_mse=0.10866 val_mae=2.55749 val_rmse=3.54524 lr=2.98e-04 epoch_time=0:05:26 elapsed=2:29:45 eta=1:26:42
+epoch=20 train_mse=0.10575 val_mae=2.60208 val_rmse=3.59428 lr=2.51e-04 epoch_time=0:05:26 elapsed=2:35:11 eta=1:17:36
+epoch=21 train_mse=0.10297 val_mae=2.53473 val_rmse=3.52300 lr=2.07e-04 epoch_time=0:05:26 elapsed=2:40:37 eta=1:08:50
+epoch=22 train_mse=0.10056 val_mae=2.56744 val_rmse=3.53503 lr=1.66e-04 epoch_time=0:05:26 elapsed=2:46:02 eta=1:00:23
+epoch=23 train_mse=0.09824 val_mae=2.57997 val_rmse=3.55205 lr=1.29e-04 epoch_time=0:05:28 elapsed=2:51:30 eta=0:52:12
+epoch=24 train_mse=0.09654 val_mae=2.61708 val_rmse=3.62789 lr=9.59e-05 epoch_time=0:05:25 elapsed=2:56:55 eta=0:44:14
+epoch=25 train_mse=0.09488 val_mae=2.49256 val_rmse=3.45792 lr=6.73e-05 epoch_time=0:05:25 elapsed=3:02:20 eta=0:36:28
+epoch=26 train_mse=0.09361 val_mae=2.59333 val_rmse=3.58975 lr=4.34e-05 epoch_time=0:06:46 elapsed=3:09:06 eta=0:29:06
+epoch=27 train_mse=0.09279 val_mae=2.60476 val_rmse=3.60629 lr=2.46e-05 epoch_time=0:07:08 elapsed=3:16:14 eta=0:21:48
+epoch=28 train_mse=0.09202 val_mae=2.49652 val_rmse=3.45829 lr=1.10e-05 epoch_time=0:07:13 elapsed=3:23:27 eta=0:14:32
+epoch=29 train_mse=0.09170 val_mae=2.52832 val_rmse=3.50655 lr=2.75e-06 epoch_time=0:07:14 elapsed=3:30:41 eta=0:07:16
+epoch=30 train_mse=0.09129 val_mae=2.54638 val_rmse=3.53275 lr=0.00e+00 epoch_time=0:08:22 elapsed=3:39:03 eta=0:00:00
+saved_checkpoint=checkpoints/PatchTST_168_d128_l4_do10.pt
