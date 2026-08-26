@@ -6,49 +6,74 @@ from matplotlib.ticker import MultipleLocator
 
 
 def log2graph(log_file):
-    train = []
-    valid = []
-    test = []
+    epochs = []
+    train_mse = []
+    val_rmse = []
 
     with open(log_file, "r") as f:
         for line in f:
             m = re.search(
-                r"Train Loss:\s*([\d.]+)\s*Vali Loss:\s*([\d.]+)\s*Test Loss:\s*([\d.]+)",
+                r"Epoch:\s*(\d+),\s*Steps:\s*\d+\s*\|\s*"
+                r"Train MSE:\s*([\d.eE+-]+)\s+"
+                r"Vali MAE:\s*([\d.eE+-]+)\s+"
+                r"Vali RMSE:\s*([\d.eE+-]+)",
                 line,
             )
+
             if m:
-                train.append(float(m.group(1)))
-                valid.append(float(m.group(2)))
-                test.append(float(m.group(3)))
-                print(train)
-                print(valid)
-                print(test)
+                epochs.append(int(m.group(1)))
+                train_mse.append(float(m.group(2)))
+                val_rmse.append(float(m.group(4)))
 
-    epochs = range(1, len(train) + 1)
+    if not epochs:
+        print("No epoch results found in the log.")
+        return
 
-    plt.figure(figsize=(100, 60))
-    plt.plot(epochs, train, marker="o", label="Train")
-    plt.plot(epochs, valid, marker="o", label="Validation")
-    plt.plot(epochs, test, marker="o", label="Test")
+    print(f"Found {len(epochs)} epochs.")
+
+    plt.figure(figsize=(20, 12))
+
+    plt.plot(
+        epochs,
+        train_mse,
+        marker="o",
+        label="Train MSE",
+    )
+
+    plt.plot(
+        epochs,
+        val_rmse,
+        marker="o",
+        label="Validation RMSE",
+    )
 
     plt.xlabel("Epoch", fontsize=32)
-    plt.ylabel("", fontsize=32)
-    plt.gca().yaxis.set_major_locator(MultipleLocator(0.25))
+    plt.ylabel("Metric", fontsize=32)
+
+    plt.gca().yaxis.set_major_locator(MultipleLocator(0.5))
 
     plt.tick_params(axis="both", labelsize=16)
+
+    plt.title(
+        "P_sLSTM Training and Validation",
+        fontsize=32,
+    )
+
     plt.legend(fontsize=18)
-    plt.xticks(epochs)
     plt.grid(True, alpha=0.3)
+    plt.xticks(epochs)
+
     plt.show()
 
 
 def get_parser():
     parser = argparse.ArgumentParser()
+
     parser.add_argument(
         "--filename",
         "-n",
         type=str,
-        default="logs/LongForecasting/P_sLSTM_Custom_336_96.log",
+        default="log.log",
     )
 
     return parser.parse_args()
